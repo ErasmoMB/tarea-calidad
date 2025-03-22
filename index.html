@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema Educativo - Pruebas Funcionales con Errores Intencionales</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif
+      margin: 20px;
+      background-color: #f2f2f2;
+    }
+    header {
+      background-color: #007BFF;
+      padding: 10px;
+      color: #fff;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    nav ul li {
+      display: inline;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      background-color: #fff;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 800px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #007BFF;
+    }
+    form {
+      margin-bottom: 20px;
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background-color: white;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+    th {
+      background-color: #007BFF;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sistema Educativo con Errores Intencionales</h1>
+    <nav>
+      <ul>
+        <li><a href="inicio.html">Inicio</a></li>
+        <li><a href="#registro-estudiantes">Estudiantes</a></li>
+        <li><a href="#registro-cursos">Cursos</a></li>
+        <li><a href="#reportes">Reportes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="inicio">
+    <h2>Bienvenido</h2>
+    <p>Esta página contiene errores intencionales para realizar pruebas funcionales en el rubro de la educación.</p>
+  </section>
+
+  <!-- Registro de Estudiantes -->
+  <section id="registro-estudiantes">
+    <h2>Registro de Estudiantes</h2>
+    <form id="studentForm">
+      <label for="studentId">ID Estudiante:</label>
+      <input type="text" id="studentId" placeholder="Ej: EST001">
+      
+      <label for="studentName">Nombre:</label>
+      <input type="text" id="studentName" placeholder="Ej: Juan Pérez" required>
+      
+      <label for="studentEmail">Correo Electrónico:</label>
+      <input type="email" id="studentEmail" placeholder="Ej: juan.perez@escuela.com">
+      
+      <label for="studentGrade">Grado:</label>
+      <select id="studentGrade" required>
+        <option value="0">Seleccione...</option>
+        <option value="1">1°</option>
+        <option value="2">2°</option>
+        <option value="3">3°</option>
+        <option value="4">4°</option>
+        <option value="5">5°</option>
+        <option value="6">6°</option>
+      </select>
+      
+      <label for="studentNameDup">Confirmar Nombre:</label>
+      <input type="text" id="studentName" placeholder="Confirmar nombre" required>
+      
+      <button type="submit">Registrar Estudiante</button>
+    </form>
+  </section>
+
+  <!-- Registro de Cursos -->
+  <section id="registro-cursos">
+    <h2>Registro de Cursos</h2>
+    <form id="courseForm">
+      <label for="courseId">ID Curso:</label>
+      <input type="text" id="courseId" placeholder="Ej: CURS001" required>
+
+      <label for="courseName">Nombre del Curso:</label>
+      <input type="text" id="courseName" placeholder="Ej: Matemáticas" required>
+
+      <label for="courseTeacher">Profesor Responsable:</label>
+      <input type="text" id="courseTeacher" placeholder="Ej: Lic. García">
+
+      <label for="courseIdDup">Confirmar ID Curso:</label>
+      <input type="text" id="courseId" placeholder="Ej: CURS001" required>
+               
+      <button type="submit">Registrar Curso</button>
+    </form>
+  </section>
+
+  <!-- Reportes -->
+  <section id="reportes">
+    <h2>Reportes</h2>
+    <h3>Estudiantes Registrados</h3>
+    <table id="studentReport">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Grado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>ERR001</td><td>Dato Erróneo</td><td>correo@erroneo</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Cursos Registrados</h3>
+    <table id="courseReport">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre del Curso</th>
+          <th>Profesor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <!-- Botón para limpiar todos los registros agregados -->
+    <button id="clearBtn">Limpiar Registros</button>
+  <script>
+    // Registro de estudiantes
+    const studentForm = document.getElementById('studentForm');
+    const studentReportBody = document.querySelector('#studentReport tbody');
+
+    studentForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const id = document.getElementById('studentId').value.trim();
+      const name = document.getElementById('studentName').value.trim();
+      const email = document.getElementById('studentEmail').value.trim();
+      const grade = document.getElementById('studentGrade').value;
+            
+      if (name === "" || grade === "" || grade === "0") {
+        alert('Faltan campos obligatorios en el registro del estudiante.');
+        return;
+      }
+      
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${id}</td><td>${name}</td><td>${email}</td><td>${grade}</td>`;
+      studentReportBody.appendChild(row);
+            
+      // studentForm.reset();
+    });
+
+    // Registro de cursos
+    const courseForm = document.getElementById('courseForm');
+    const courseReportBody = document.querySelector('#courseReport tbody');
+
+    courseForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const id = document.getElementById('courseId').value.trim();
+      const name = document.getElementById('courseName').value.trim();
+      const teacher = document.getElementById('courseTeacher').value.trim();
+      
+      if (!id || !name || !teacher) {
+        alert('Faltan campos obligatorios en el registro del curso.');
+        return;
+      }
+      
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${id}</td><td>${name}</td><td>${teacher}</td>`;
+      courseReportBody.appendChild(row);
+     
+      // courseForm.reset();
+    });
+    
+    // Botón para limpiar todos los registros
+    document.getElementById('clearBtn').addEventListener('click', function() {
+      studentReportBody.innerHTML = '';
+      courseReportBody.innerHTML = '';
+      alert('Se han limpiado todos los registros.');
+    });
+  </script>
+</body>
+</html>
